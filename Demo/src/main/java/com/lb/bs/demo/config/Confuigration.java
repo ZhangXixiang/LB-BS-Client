@@ -21,7 +21,7 @@ public class Confuigration {
     @Bean
     public Config newConfig() {
         Config config = new Config();
-        config.setScanPackageNames(Lists.newArrayList("com.lb.bs"));
+        config.setScanPackageNames("com.lb.bs.demo.bean,com.lb.bs.demo.testBean");
         config.setZkPath("106.13.46.179");
         config.setZkPort(2181);
         return config;

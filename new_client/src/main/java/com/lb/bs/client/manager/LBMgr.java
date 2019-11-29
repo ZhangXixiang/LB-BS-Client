@@ -1,7 +1,9 @@
 package com.lb.bs.client.manager;
 
+import com.google.common.collect.Lists;
 import com.lb.bs.client.model.ScanStaticModel;
 import com.lb.bs.client.util.CollectionUtils;
+import com.lb.bs.client.util.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -9,6 +11,8 @@ import org.springframework.context.ApplicationContextAware;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * program: LB-BS-Client
@@ -34,7 +38,7 @@ public class LBMgr implements InitializingBean, ApplicationContextAware {
         }
         initConfig();
 
-        List<String> scanPackList = CollectionUtils.isNotEmpty(config.getScanPackageNames()) ? config.getScanPackageNames() : new ArrayList<>();
+        List<String> scanPackList = StringUtils.isNotEmpty(config.getScanPackageNames()) ? Stream.of(config.getScanPackageNames().split(",")).collect(Collectors.toList()) : new ArrayList<>();
 
         ScanStaticModel scanStaticModel = scanMgr.scanPackage(scanPackList);
 

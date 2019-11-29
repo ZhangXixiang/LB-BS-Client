@@ -33,8 +33,7 @@ public class ReflectionUtil {
         //
         // filter
         //todo
-        FilterBuilder filterBuilder = new FilterBuilder().includePackage("com");
-
+        FilterBuilder filterBuilder = new FilterBuilder().includePackage("com.lb.bs.client");
         for (String packName : packNameList) {
             filterBuilder = filterBuilder.includePackage(packName);
         }

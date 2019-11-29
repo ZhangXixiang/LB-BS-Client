@@ -1,4 +1,4 @@
-package com.lb.bs.demo.bean;
+package com.lb.bs.demo.testBean;
 
 import com.lb.bs.client.annotation.LBClass;
 import com.lb.bs.client.annotation.LBItem;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @LBClass
 @Component
-public class User {
+public class Student {
 
     private Integer id;
 
@@ -36,7 +36,7 @@ public class User {
         this.name = name;
     }
 
-    public User() {
+    public Student() {
         System.out.println("init User");
     }
 

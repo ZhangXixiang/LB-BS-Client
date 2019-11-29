@@ -9,17 +9,17 @@ import java.util.List;
  * description:
  */
 public class Config {
-    private List<String> scanPackageNames;
+    private String scanPackageNames;
 
     private String zkPath;
 
     private int zkPort;
 
-    public List<String> getScanPackageNames() {
+    public String getScanPackageNames() {
         return scanPackageNames;
     }
 
-    public void setScanPackageNames(List<String> scanPackageNames) {
+    public void setScanPackageNames(String scanPackageNames) {
         this.scanPackageNames = scanPackageNames;
     }
 
