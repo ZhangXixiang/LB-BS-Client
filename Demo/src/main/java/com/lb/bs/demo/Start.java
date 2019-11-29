@@ -19,7 +19,7 @@ public class Start {
     public static void main(String[] args) throws IOException, InterruptedException {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext();
         ac.register(Confuigration.class);
-        ac.scan("com.jd.o2o.lb.bs");
+        ac.scan("com.jd.lb.bs");
         ac.refresh();
         User user = (User) ac.getBean("user");
         String name = user.getName();
