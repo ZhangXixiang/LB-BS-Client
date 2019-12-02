@@ -1,7 +1,9 @@
 package com.lb.bs.client.manager;
 
-import com.lb.bs.client.Bean.Config;
+import com.lb.bs.client.config.StaticConfig;
+import com.lb.bs.client.factory.SingletonFactory;
 import com.lb.bs.client.model.ScanStaticModel;
+import com.lb.bs.client.register.SpringRegistry;
 import com.lb.bs.client.util.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
@@ -29,7 +31,7 @@ public class LBMgr implements InitializingBean, ApplicationContextAware {
 
     private ZKMgr zkMgr;
 
-    private Config config;
+    private StaticConfig staticConfig;
 
     public void afterPropertiesSet() throws Exception {
         if (initFlag) {
@@ -37,13 +39,13 @@ public class LBMgr implements InitializingBean, ApplicationContextAware {
         }
         initConfig();
 
-        List<String> scanPackList = StringUtils.isNotEmpty(config.getScanPackageNames()) ? Stream.of(config.getScanPackageNames().split(",")).collect(Collectors.toList()) : new ArrayList<>();
+        List<String> scanPackList = StringUtils.isNotEmpty(staticConfig.getScanPackageNames()) ? Stream.of(staticConfig.getScanPackageNames().split(",")).collect(Collectors.toList()) : new ArrayList<>();
 
         ScanStaticModel scanStaticModel = scanMgr.scanPackage(scanPackList);
 
-        LBCoreMgr.getInstance().firstSync(scanStaticModel);
+        CoreMgr.getInstance().firstSync(scanStaticModel);
 
-        LBCoreMgr.getInstance().secondSync();
+        CoreMgr.getInstance().secondSync();
 
         initFlag = true;
     }
@@ -51,13 +53,14 @@ public class LBMgr implements InitializingBean, ApplicationContextAware {
 
     private void initConfig() {
         registry = SpringRegistry.getInstance(applicationContext);
-        scanMgr = new ScanMgr();
 
-        config = (Config) registry.findOneClassByType(Config.class, false);
-        if (config == null) {
+        scanMgr = SingletonFactory.getInstance(ScanMgr.class);
+
+        this.staticConfig = registry.findOneClassByType(StaticConfig.class, false);
+        if (staticConfig == null) {
             return;
         }
-        zkMgr = ZKMgr.getInstance(config.getZkPath(), config.getZkPort());
+        this.zkMgr = ZKMgr.getInstance(staticConfig.getZkPath(), staticConfig.getZkPort());
     }
 
 

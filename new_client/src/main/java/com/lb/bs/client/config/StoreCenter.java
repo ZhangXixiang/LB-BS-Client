@@ -1,10 +1,9 @@
-package com.lb.bs.client.manager;
+package com.lb.bs.client.config;
 
 import com.lb.bs.client.model.LBItemBean;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * create: 2019-11-27 11:27
  * description:
  */
-public class LBStoreCenter {
+public class StoreCenter {
     Map<String, LBItemBean> configItemMap = new ConcurrentHashMap<>();
 
     Map<String, Field> filedItemMap = new ConcurrentHashMap<>();
@@ -25,10 +24,10 @@ public class LBStoreCenter {
 
 
     public static class Singleton {
-       private static LBStoreCenter lbStoreCenter = new LBStoreCenter();
+       private static StoreCenter storeCenter = new StoreCenter();
 
-        public static LBStoreCenter getLbStoreCenter() {
-            return lbStoreCenter;
+        public static StoreCenter getStoreCenter() {
+            return storeCenter;
         }
     }
 
@@ -41,8 +40,8 @@ public class LBStoreCenter {
         this.filedItemMap = filedItemMap;
     }
 
-    public static LBStoreCenter getInstance() {
-        return Singleton.getLbStoreCenter();
+    public static StoreCenter getInstance() {
+        return Singleton.getStoreCenter();
     }
 
     public Map<String, LBItemBean> getConfigItemMap() {
@@ -61,7 +60,7 @@ public class LBStoreCenter {
         this.methodMap = methodMap;
     }
 
-    private LBStoreCenter() {
+    private StoreCenter() {
 
     }
 

@@ -1,6 +1,7 @@
 package com.lb.bs.client.manager;
 
 import com.lb.bs.client.annotation.LBItem;
+import com.lb.bs.client.config.StoreCenter;
 import com.lb.bs.client.model.ScanStaticModel;
 import com.lb.bs.client.util.ReflectionUtil;
 import org.reflections.Reflections;
@@ -19,7 +20,7 @@ import java.util.Set;
  */
 public class ScanMgr {
 
-    private LBStoreCenter storeCenter;
+    private StoreCenter storeCenter;
 
     public ScanStaticModel scanPackage(List<String> packageNames) {
         Reflections reflection = ReflectionUtil.getReflection(packageNames);

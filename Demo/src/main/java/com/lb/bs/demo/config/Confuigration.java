@@ -1,7 +1,6 @@
 package com.lb.bs.demo.config;
 
-import com.lb.bs.client.Bean.Config;
-import com.lb.bs.client.aspect.LBAspect;
+import com.lb.bs.client.config.StaticConfig;
 import com.lb.bs.client.manager.LBMgr;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +17,12 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class Confuigration {
 
     @Bean
-    public Config newConfig() {
-        Config config = new Config();
-        config.setScanPackageNames("com.lb.bs.demo.bean,com.lb.bs.demo.testBean");
-        config.setZkPath("106.13.46.179");
-        config.setZkPort(2181);
-        return config;
+    public StaticConfig newConfig() {
+        StaticConfig staticConfig = new StaticConfig();
+        staticConfig.setScanPackageNames("com.lb.bs.demo.bean,com.lb.bs.demo.testBean");
+        staticConfig.setZkPath("106.13.46.179");
+        staticConfig.setZkPort(2181);
+        return staticConfig;
     }
 
     @Bean

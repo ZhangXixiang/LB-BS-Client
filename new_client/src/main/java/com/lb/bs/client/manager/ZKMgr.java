@@ -1,5 +1,6 @@
 package com.lb.bs.client.manager;
 
+import com.lb.bs.client.factory.SingletonFactory;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -19,14 +20,18 @@ public class ZKMgr {
     private CuratorFramework client;
     private static boolean initFlag;
     private static ZKMgr zkMgr;
+    private static WatchMgr watchMgr;
 
     public static ZKMgr getInstance(String path, int port) {
         if (zkMgr == null) {
             synchronized (ZKMgr.class) {
-                zkPath = path;
-                zkPort = port;
-                zkMgr = new ZKMgr(path, port);
-                initFlag = true;
+                if (zkMgr == null) {
+                    zkPath = path;
+                    zkPort = port;
+                    zkMgr = new ZKMgr(path, port);
+                    watchMgr = SingletonFactory.getInstance(WatchMgr.class);
+                    initFlag = true;
+                }
             }
         }
         return zkMgr;
@@ -96,8 +101,7 @@ public class ZKMgr {
         if (!exist) {
             return;
         }
-        WatchMgr watchMgr = WatchMgr.getInstance(client, this);
-        watchMgr.watchOneItem(itemKey);
+        SingletonFactory.getInstance(WatchMgr.class).watchOneItem(itemKey);
     }
 
     public boolean exist(String path) {
@@ -110,5 +114,9 @@ public class ZKMgr {
             e.printStackTrace();
         }
         return true;
+    }
+
+    CuratorFramework getClient() {
+        return client;
     }
 }

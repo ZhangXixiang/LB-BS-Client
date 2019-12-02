@@ -1,7 +1,7 @@
 package com.lb.bs.client.aspect;
 
 import com.lb.bs.client.annotation.LBItem;
-import com.lb.bs.client.manager.LBStoreCenter;
+import com.lb.bs.client.config.StoreCenter;
 import com.lb.bs.client.model.LBItemBean;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -32,7 +32,7 @@ public class LBAspect {
     @Around(value = "anyPublicMethod() && @annotation(lbItem)")
     public Object aroundItem(ProceedingJoinPoint pjp, LBItem lbItem) {
         String key = lbItem.key();
-        LBItemBean itemBean = LBStoreCenter.getInstance().getConfigItemMap().get(key);
+        LBItemBean itemBean = StoreCenter.getInstance().getConfigItemMap().get(key);
         if (itemBean != null) {
             Object value = itemBean.getValue();
             return value;

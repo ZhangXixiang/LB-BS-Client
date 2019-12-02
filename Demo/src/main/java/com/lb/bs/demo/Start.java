@@ -1,13 +1,12 @@
 package com.lb.bs.demo;
 
-import com.lb.bs.client.manager.LBStoreCenter;
+import com.lb.bs.client.config.StoreCenter;
 import com.lb.bs.client.model.LBItemBean;
 import com.lb.bs.demo.bean.User;
 import com.lb.bs.demo.config.Confuigration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
-import java.net.Inet4Address;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,7 +28,7 @@ public class Start {
         System.out.println(name);
         for (int i = 0; i < 10000; i++) {
             Thread.sleep(1000);
-            LBItemBean itemBean = LBStoreCenter.getInstance().getConfigItemMap().get("/lb/isYoung");
+            LBItemBean itemBean = StoreCenter.getInstance().getConfigItemMap().get("/lb/isYoung");
             System.out.println(itemBean.getValue());
             System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + itemBean.getValue());
         }

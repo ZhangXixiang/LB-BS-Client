@@ -1,4 +1,4 @@
-package com.lb.bs.client.manager;
+package com.lb.bs.client.register;
 
 import org.springframework.aop.framework.Advised;
 import org.springframework.aop.support.AopUtils;
@@ -18,8 +18,8 @@ public class SpringRegistry {
     private static SpringRegistry springRegistry;
     private static boolean initFlag = false;
 
-    public Object findOneClassByType(Class<?> clazz, boolean withProxy) {
-        Object bean = app.getBean(clazz);
+    public <T> T findOneClassByType(Class<T> clazz, boolean withProxy) {
+        T bean = app.getBean(clazz);
         if (!withProxy) {
             return bean;
         }

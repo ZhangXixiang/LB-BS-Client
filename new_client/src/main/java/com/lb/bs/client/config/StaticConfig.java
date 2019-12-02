@@ -1,6 +1,4 @@
-package com.lb.bs.client.Bean;
-
-import java.util.List;
+package com.lb.bs.client.config;
 
 /**
  * program: LB-BS-Client
@@ -8,14 +6,14 @@ import java.util.List;
  * create: 2019-11-27 11:00
  * description:
  */
-public class Config {
+public class StaticConfig {
     private String scanPackageNames;
 
     private String zkPath;
 
     private int zkPort;
 
-    private String loclaHost;
+
 
     public String getScanPackageNames() {
         return scanPackageNames;
@@ -39,13 +37,5 @@ public class Config {
 
     public void setZkPort(int zkPort) {
         this.zkPort = zkPort;
-    }
-
-    public String getLoclaHost() {
-        return loclaHost;
-    }
-
-    public void setLoclaHost(String loclaHost) {
-        this.loclaHost = loclaHost;
     }
 }
