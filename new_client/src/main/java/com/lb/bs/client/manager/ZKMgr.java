@@ -75,7 +75,7 @@ public class ZKMgr {
         }
     }
 
-    public Object getData(String itemKey) {
+    public String getData(String itemKey) {
         try {
             boolean exist = exist(itemKey);
             if (!exist) {

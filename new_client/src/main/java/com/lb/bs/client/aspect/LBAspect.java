@@ -1,11 +1,13 @@
-package com.lb.bs.client.manager;
+package com.lb.bs.client.aspect;
 
 import com.lb.bs.client.annotation.LBItem;
+import com.lb.bs.client.manager.LBStoreCenter;
 import com.lb.bs.client.model.LBItemBean;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 /**
  * program: LB-BS-Client
@@ -14,6 +16,7 @@ import org.aspectj.lang.annotation.Pointcut;
  * description:
  */
 @Aspect
+@Component
 public class LBAspect {
 
     @Pointcut(value = "execution(public * *(..))")

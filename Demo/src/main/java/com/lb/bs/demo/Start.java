@@ -7,6 +7,9 @@ import com.lb.bs.demo.config.Confuigration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * program: LB-BS-Client
@@ -24,9 +27,12 @@ public class Start {
         User user = (User) ac.getBean("user");
         String name = user.getName();
         System.out.println(name);
-        Thread.sleep(1000);
-        LBItemBean itemBean = LBStoreCenter.getInstance().getConfigItemMap().get("/lb/name");
-        System.out.println(itemBean);
+        for (int i = 0; i < 10000; i++) {
+            Thread.sleep(1000);
+            LBItemBean itemBean = LBStoreCenter.getInstance().getConfigItemMap().get("/lb/isYoung");
+            System.out.println(itemBean.getValue());
+            System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + itemBean.getValue());
+        }
         System.in.read();
     }
 }

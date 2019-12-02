@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * program: LB-BS-Client
@@ -14,11 +15,11 @@ import java.util.Map;
  * description:
  */
 public class LBStoreCenter {
-    Map<String, LBItemBean> configItemMap = new HashMap<String, LBItemBean>();
+    Map<String, LBItemBean> configItemMap = new ConcurrentHashMap<>();
 
-    Map<String, Field> filedItemMap = new HashMap<>();
+    Map<String, Field> filedItemMap = new ConcurrentHashMap<>();
 
-    Map<String, Method> methodMap = new HashMap<>();
+    Map<String, Method> methodMap = new ConcurrentHashMap<>();
 
 //    Map<String, Method> setMethodMap = new HashMap<>();
 
@@ -63,4 +64,5 @@ public class LBStoreCenter {
     private LBStoreCenter() {
 
     }
+
 }

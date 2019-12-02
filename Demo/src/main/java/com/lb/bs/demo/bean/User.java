@@ -18,6 +18,8 @@ public class User {
 
     private String name;
 
+    private boolean isYoung;
+
     @LBItem(key = "/lb/id", value = "10")
     public Integer getId() {
         return id;
@@ -39,5 +41,12 @@ public class User {
     public User() {
         System.out.println("init User");
     }
+    @LBItem(key = "/lb/isYoung", value = "hee")
+    public boolean getIsYoung() {
+        return isYoung;
+    }
 
+    public void setYoung(boolean young) {
+        isYoung = young;
+    }
 }

@@ -53,7 +53,9 @@ public class LBCoreMgr {
     private void updatOneIteFromRemote(LBItemBean bean) {
         String key = bean.getKey();
         Object data = ZKMgr.getInstance().getData(key);
-        bean.setValue(FieldUtil.transform(bean.getField(), data));
+        if (data != null) {
+            bean.setValue(FieldUtil.transform(bean.getField(), data));
+        }
     }
 
 

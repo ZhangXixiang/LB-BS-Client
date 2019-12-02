@@ -4,6 +4,8 @@ import org.springframework.aop.framework.Advised;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.context.ApplicationContext;
 
+import java.lang.reflect.Field;
+
 /**
  * program: LB-BS-Client
  * author: bsworld.xie
@@ -17,6 +19,21 @@ public class SpringRegistry {
     private static boolean initFlag = false;
 
     public Object findOneClassByType(Class<?> clazz, boolean withProxy) {
+        Object bean = app.getBean(clazz);
+        if (!withProxy) {
+            return bean;
+        }
+
+        try {
+            return getTargetObject(bean);
+        } catch (Exception e) {
+            System.out.println("get bean exception");
+        }
+        return bean;
+    }
+
+    public Object findOneClassByType(Field field, boolean withProxy) {
+        Class<?> clazz = field.getDeclaringClass();
         Object bean = app.getBean(clazz);
         if (!withProxy) {
             return bean;

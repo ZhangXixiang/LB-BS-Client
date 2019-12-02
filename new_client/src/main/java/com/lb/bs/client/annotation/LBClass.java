@@ -14,4 +14,7 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = ElementType.TYPE)
 public @interface LBClass {
+    String groupName() default "";
+
+    boolean enableGray() default false;
 }

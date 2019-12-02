@@ -14,7 +14,10 @@ public class LBItemBean<T> {
     private T value;
 
     private Field field;
-
+    /**
+     *
+     * get方法
+     * */
     private Method method;
     /**
      *
@@ -60,5 +63,16 @@ public class LBItemBean<T> {
 
     public void setOriginBean(Object originBean) {
         this.originBean = originBean;
+    }
+
+    @Override
+    public String toString() {
+        return "LBItemBean{" +
+                "key='" + key + '\'' +
+                ", value=" + value +
+                ", field=" + field +
+                ", method=" + method +
+                ", originBean=" + originBean +
+                '}';
     }
 }

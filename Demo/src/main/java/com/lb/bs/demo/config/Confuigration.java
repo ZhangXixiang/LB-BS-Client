@@ -1,8 +1,7 @@
 package com.lb.bs.demo.config;
 
-import com.google.common.collect.Lists;
-import com.lb.bs.client.manager.Config;
-import com.lb.bs.client.manager.LBAspect;
+import com.lb.bs.client.Bean.Config;
+import com.lb.bs.client.aspect.LBAspect;
 import com.lb.bs.client.manager.LBMgr;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,10 +30,5 @@ public class Confuigration {
     public LBMgr newLbMgr() {
         LBMgr mgr = new LBMgr();
         return mgr;
-    }
-    @Bean
-    public LBAspect getAspect() {
-        LBAspect lbAspect = new LBAspect();
-        return lbAspect;
     }
 }

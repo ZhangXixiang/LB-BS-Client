@@ -1,4 +1,4 @@
-package com.lb.bs.client.manager;
+package com.lb.bs.client.Bean;
 
 import java.util.List;
 
@@ -14,6 +14,8 @@ public class Config {
     private String zkPath;
 
     private int zkPort;
+
+    private String loclaHost;
 
     public String getScanPackageNames() {
         return scanPackageNames;
@@ -37,5 +39,13 @@ public class Config {
 
     public void setZkPort(int zkPort) {
         this.zkPort = zkPort;
+    }
+
+    public String getLoclaHost() {
+        return loclaHost;
+    }
+
+    public void setLoclaHost(String loclaHost) {
+        this.loclaHost = loclaHost;
     }
 }

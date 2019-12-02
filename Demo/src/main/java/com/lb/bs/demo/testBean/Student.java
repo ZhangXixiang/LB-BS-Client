@@ -18,7 +18,7 @@ public class Student {
 
     private String name;
 
-    @LBItem(key = "/lb/id", value = "10")
+    @LBItem(key = "/lb/student/id", value = "10")
     public Integer getId() {
         return id;
     }
@@ -27,7 +27,7 @@ public class Student {
         this.id = id;
     }
 
-    @LBItem(key = "/lb/name", value = "hello_world")
+    @LBItem(key = "/lb/student/name", value = "hello_world")
     public String getName() {
         return name;
     }
